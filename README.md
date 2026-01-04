@@ -139,6 +139,8 @@ Este proyecto incluye un workflow de GitHub Actions que permite ejecutar las pru
 |-------------|-------------|
 | **Postman** | Plataforma principal para ejecutar y documentar las pruebas de API. |
 | **Newman**  | CLI para ejecutar colecciones de Postman en CI/CD o desde terminal. |
+| **Node.js** | Entorno de ejecución para JavaScript, requerido para Newman. |
+| **HTML Extra (Newman Reporter)** | Generador de reportes HTML detallados para las pruebas. |
 | **JavaScript (Test Scripts)** | Usado en los tests de validación de respuesta y manejo de variables. |
 
 
