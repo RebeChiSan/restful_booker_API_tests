@@ -1,0 +1,42 @@
+name: Postman Tests
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar Newman y Reporter HTML
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+      - name: Crear carpeta para reportes
+        run: mkdir -p reports
+
+      - name: Ejecutar pruebas de Postman
+        run: |
+          newman run tests/RestfulBooker_API_Testing.postman_collection.json \
+          -e tests/RestfulBooker_Env.postman_environment.json \
+          --reporters cli,htmlextra \
+          --reporter-htmlextra-export reports/reporte.html \
+          --reporter-htmlextra-title "Reporte de Pruebas API RestfulBooker"
+
+      - name: Subir reporte como artefacto
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: postman-html-report
+          path: reports/reporte.html
+          retention-days: 5

@@ -94,6 +94,22 @@ Si prefieres ejecutar todas las pruebas sin abrir Postman:
    ```
    Genera una carpeta llamada newman con el reporte HTML en el directorio raiz y muestra tambien los resultados en la terminal.
 
+### 🐙 Desde GitHub Actions.
+
+Este proyecto incluye un workflow de GitHub Actions que permite ejecutar las pruebas automáticamente en la nube, generando un reporte HTML.
+
+1. **Navega a la pestaña Actions**:
+   - Haz clic en la pestaña **Actions** en la parte superior del repositorio.
+
+2. **Selecciona el workflow**:
+   - Busca y selecciona el workflow llamado **"Postman Tests"**.
+
+3. **Ejecuta el workflow**:
+   - Haz clic en **"Run workflow"** (puedes seleccionar la rama si es necesario, por defecto es `main`).
+
+4. **Descarga el reporte**:
+   - Una vez completado el workflow, ve a la sección de **Artifacts** en el resumen del job y descarga el archivo `postman-html-report.zip` que contiene el reporte HTML de las pruebas.
+
 ## 🧰 Tecnologías usadas.
 
 | Tecnología | Descripción |
