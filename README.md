@@ -6,6 +6,29 @@ Este proyecto contiene una colección de **pruebas automatizadas de API** creada
 
 El objetivo es proporcionar una base para realizar **testing funcional y de integración** sobre la API, incluye flujos positivos y negativos.
 
+## 📊 Alcance de la automatización
+
+Esta automatización cubre los siguientes aspectos:
+
+- Pruebas de autenticación (POST /auth)
+- Creación de reservas (POST /booking)
+- Consulta de reservas (GET /booking)
+- Actualización de reservas (PUT/PATCH /booking)
+- Eliminación de reservas (DELETE /booking)
+- Validaciones de respuestas positivas y negativas
+- Manejo de variables de entorno
+
+## 🎓 Habilidades y conocimientos adquiridos
+
+A través de este proyecto, se han adquirido conocimientos en:
+
+- Diseño y ejecución de pruebas de API con Postman
+- Uso de entornos y variables en Postman
+- Automatización de pruebas con Newman
+- Integración continua con GitHub Actions
+- Generación de reportes de pruebas HTML con Newman-reporter-htmlextra
+- Mejores prácticas en testing de APIs
+
 ## 🗂️ Estructura del proyecto.
 
 ```
@@ -117,6 +140,8 @@ Este proyecto incluye un workflow de GitHub Actions que permite ejecutar las pru
 | **Postman** | Plataforma principal para ejecutar y documentar las pruebas de API. |
 | **Newman**  | CLI para ejecutar colecciones de Postman en CI/CD o desde terminal. |
 | **JavaScript (Test Scripts)** | Usado en los tests de validación de respuesta y manejo de variables. |
+
+
 
 ---
 
