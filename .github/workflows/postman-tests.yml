@@ -26,8 +26,8 @@ jobs:
 
       - name: Ejecutar pruebas de Postman
         run: |
-          newman run tests/RestfulBooker_API_Testing.postman_collection.json \
-          -e tests/RestfulBooker_Env.postman_environment.json \
+          newman run RestfulBooker_API_Testing.postman_collection.json \
+          -e RestfulBooker_Env.postman_environment.json \
           --reporters cli,htmlextra \
           --reporter-htmlextra-export reports/reporte.html \
           --reporter-htmlextra-title "Reporte de Pruebas API RestfulBooker"
