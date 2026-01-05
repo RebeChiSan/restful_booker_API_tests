@@ -4,30 +4,32 @@
 
 Este proyecto contiene una colección de **pruebas automatizadas de API** creadas en **Postman** para validar los endpoints de la API pública [Restful Booker](https://restful-booker.herokuapp.com/apidoc/index.html).
 
-El objetivo es proporcionar una base para realizar **testing funcional y de integración** sobre la API, incluye flujos positivos y negativos.
+El objetivo es proporcionar una base para realizar **testing funcional y de integración** sobre la API, incluye flujos positivos y negativos para detectar errores y fallos.
 
 ## 📊 Alcance de la automatización
 
 Esta automatización cubre los siguientes aspectos:
 
-- Pruebas de autenticación (POST /auth)
-- Creación de reservas (POST /booking)
-- Consulta de reservas (GET /booking)
-- Actualización de reservas (PUT/PATCH /booking)
-- Eliminación de reservas (DELETE /booking)
-- Validaciones de respuestas positivas y negativas
-- Manejo de variables de entorno
+- Pruebas de autenticación (POST /auth).
+- Creación de reservas (POST /booking).
+- Consulta de reservas (GET /booking).
+- Actualización de reservas (PUT/PATCH /booking).
+- Eliminación de reservas (DELETE /booking).
+- Validaciones de respuestas positivas y negativas.
+- Manejo de variables de entorno.
 
 ## 🎓 Habilidades y conocimientos adquiridos
 
 A través de este proyecto, se han adquirido conocimientos en:
 
-- Diseño y ejecución de pruebas de API con Postman
-- Uso de entornos y variables en Postman
-- Automatización de pruebas con Newman
-- Integración continua con GitHub Actions
-- Generación de reportes de pruebas HTML con Newman-reporter-htmlextra
-- Mejores prácticas en testing de APIs
+- Diseño y ejecución de pruebas de API con Postman.
+- Uso de entornos y variables en Postman.
+- Automatización de pruebas con Newman.
+- Integración continua con GitHub Actions.
+- Generación de reportes de pruebas HTML con Newman-reporter-htmlextra.
+- Mejores prácticas en testing de APIs.
+- Deteccion de bugs a partir de pruebas automatizadas.
+
 
 ## 🗂️ Estructura del proyecto.
 
@@ -133,6 +135,42 @@ Este proyecto incluye un workflow de GitHub Actions que permite ejecutar las pru
 4. **Descarga el reporte**:
    - Una vez completado el workflow, ve a la sección de **Artifacts** en el resumen del job y descarga el archivo `postman-html-report.zip` que contiene el reporte HTML de las pruebas.
 
+### 🧰 Resultados.
+Al ejecutar todas las pruebas sobre API, las cuales cubren tanto casos positivos como negativos, se detecto un relacionado con el status code de la respuesta recibida.
+
+**Bug 01: Falta de validación de formato de fecha en creación de reserva**
+ID: BUG-NEG03 
+Severidad: Media 
+Prioridad: Alta 
+Endpoint: POST /booking
+
+**Descripción**
+La API permite la creación de recursos (o no notifica el error) cuando se envía un cuerpo de petición con formatos de fecha inválidos (ej. strings, enteros o caracteres especiales), devolviendo un código de estado 200 OK en lugar de un error de validación y una respuesta con la fecha de formato incorrecta.
+
+**Pasos para reproducir**
+1.- Uilizar la peticion NEG03 - Create Booking with Invalid Date Format
+
+2.- En el JSON del body, enviar el campo de fecha con un valor no válido:
+
+JSON
+
+{
+  "bookingdates": {
+    "checkin": "fecha-invalida-123",
+    "checkout": "hola mundo"
+  }
+}
+3.- Ejecutar la peticion y observar la respuesta del servidor.
+
+**Resultado Esperado**
+El servidor debe devolver un 400 Bad Request o 4xx indicando que el formato de fecha es incorrecto.
+
+**Resultado Actual**
+El servidor devuelve un 200 OK.
+![error_respuesta](image.png)
+
+**Nota: Al correr las pruebas con Github Actions estan van a fallar por esta razón.**
+
 ## 🧰 Tecnologías usadas.
 
 | Tecnología | Descripción |
@@ -142,9 +180,6 @@ Este proyecto incluye un workflow de GitHub Actions que permite ejecutar las pru
 | **Node.js** | Entorno de ejecución para JavaScript, requerido para Newman. |
 | **HTML Extra (Newman Reporter)** | Generador de reportes HTML detallados para las pruebas. |
 | **JavaScript (Test Scripts)** | Usado en los tests de validación de respuesta y manejo de variables. |
-
-
-**Nota: Al ejecutar las pruebas, 2 pruebas fallan porque deberian regresar un status code distinto a 200 ya que se prueban casos negativos, estos bugs provienen de la API sujeta a pruebas.**
 
 ---
 
