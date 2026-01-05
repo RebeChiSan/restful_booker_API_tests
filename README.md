@@ -144,6 +144,7 @@ Este proyecto incluye un workflow de GitHub Actions que permite ejecutar las pru
 | **JavaScript (Test Scripts)** | Usado en los tests de validación de respuesta y manejo de variables. |
 
 
+**Nota: Al ejecutar las pruebas, 2 pruebas fallan porque deberian regresar un status code distinto a 200 ya que se prueban casos negativos, estos bugs provienen de la API sujeta a pruebas.**
 
 ---
 
