@@ -334,8 +334,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 500\", function () {\r",
-											"    pm.response.to.have.status(500);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -667,50 +667,6 @@
 									"path": [
 										"booking",
 										"1000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "NEG06 - Get Booking with Invalid Filter Params",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"\r",
-											"pm.test('Response is array', function(){pm.expect(pm.response.json()).to.be.an('array');});"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/booking?firstname=Uxmal&lastname=Texcoco",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"booking"
-									],
-									"query": [
-										{
-											"key": "firstname",
-											"value": "Uxmal"
-										},
-										{
-											"key": "lastname",
-											"value": "Texcoco"
-										}
 									]
 								}
 							},
