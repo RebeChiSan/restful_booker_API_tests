@@ -148,6 +148,7 @@ Endpoint: POST /booking
 La API permite la creación de recursos (o no notifica el error) cuando se envía un cuerpo de petición con formatos de fecha inválidos (ej. strings, enteros o caracteres especiales), devolviendo un código de estado 200 OK en lugar de un error de validación y una respuesta con la fecha de formato incorrecta.
 
 **Pasos para reproducir**
+
 1.- Uilizar la peticion NEG03 - Create Booking with Invalid Date Format
 
 2.- En el JSON del body, enviar el campo de fecha con un valor no válido:
